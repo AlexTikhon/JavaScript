@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>repeate-JS</title>
+</head>
+<body>
+	<script type="text/javascript"> 
+	// for (var i = 2; i <= 10; i++) {
+	//  if(!(i % 2)) alert(i);
+	// };
+	// var i = 0;
+	// while(i < 3){
+	//  alert('number is ' + i + '!');
+	//  i++;
+	// }
+	// while(true){
+	//  var a = prompt('>100', '');
+	//  if(a > 100 || a === null) break;
+	// }
+	// if (browser === 'IE'){
+	//  alert('O, da y vas IE');
+	// } else if (browser === 'Chrome' || browser === 'FR' || browser === 'SF' || browser === 'OP'){
+	//  alert('Da, i eti brow...');
+	// } else {
+	//  alert('We ... of you !');
+	// }
+	// var a = +prompt('a ?','');
+	// switch(a){
+	//  case 0: 
+	//  alert(0);
+	//  break;
+	//  case 1: 
+	//  alert(1);
+	//  break;
+	//  case 2:
+	//  case 3:
+	//  alert('2,3');
+	//  break;
+	// }
+	function checkAge(age){
+		return (age > 18) ? true : confirm('Parents...?', '');
+	}
+	function checkAge2(age){
+		return (age > 18) || confirm('qwe?', '');
+	}
+	function min(a,b){
+		return (a > b) ? b : a;
+	}
+	// var a = +prompt('a ?', '');
+	// var b = +prompt('b ?', '');
+	function pow(a,b){
+		var res = a;
+		for(var i = 1; i < b; i++){
+			res *= a;
+		}
+		return res;
+	}
+	// if(a<1 || b<1 ||a==null || b==null){
+	//  alert('no');
+	// } else{
+	//  alert(pow(a,b));
+	// }
+	function sumTo(n){
+		var res = n;
+		for(var i=1; i<n; i++){
+			res += i;
+		}
+		return res;
+	}
+	function sumTo(n){
+		if(n==1){
+			return 1;
+		} else{
+			return n + sumTo(n-1);
+		}
+	}
+	function sumTo(n){
+		if(n==1) return 1;
+		return n*(n+1)/2;
+	}
+	function factorial(n){
+		return (n != 1) ? n * factorial(n - 1): 1;
+	}
+	function factorial(n){
+		if(n == 1) return n;
+		var res = n;
+		for(var i = 1; i < n; i++){
+			res *= (n-i);
+		}
+		return res;
+	}
+	function fib(n){
+		if (n <= 2) return 'n should be > 2 !';
+		var a = 1, b = 1, res = null;
+		for(var i = 2; i < n; i++){
+			res = a + b;
+			a = b;
+			b = res;
+		}
+		return b;
+	}
+	function isNumeric(n){
+		return !isNaN(parseFloat(n) && isFinite(n));
+	}
+	function addNums(){
+		var a = +prompt('n ?','');
+		var b = +prompt('n ?', '');
+		if (!(isNumeric(a) && isNumeric(b))) return false;
+		return a + b;
+	}
+	function getDecimal(n){
+		var a = parseInt(n);
+		return (n - a).toFixed(2);
+	}
+	function fibBinet(n){
+		var phi = (1 + Math.sqrt(5))/2;
+		return Math.round(Math.pow(phi, n) / Math.sqrt(5));
+	}
+	var max = 5;
+	var n = Math.random();
+	n *= max;
+	function ucFirst(str){
+		str = str.toLowerCase();
+		return str = str.charAt(0).toUpperCase() + str.slice(1);
+	}
+	function checkSpam(str){
+		var str = str.toLowerCase();
+		return (~(str.indexOf('xxx')) || ~(str.indexOf('viagra'))) ? true: false;
+	}
+	function truncate(str, maxlength){
+		if (str.length > maxlength){
+			return str.slice(0, (maxlength - 3)) + '...';
+		}
+		return str;
+	}
+	function isEmpty(obj){
+		var res = null;
+		for (var key in obj){
+			res = 1;
+		}
+		return (res) ? false: true;
+	}
+	function sumOfSalaries(obj){
+		var res = 0;
+		for (var key in obj){
+			res += obj[key];
+		}
+		return res;
+	}
+	function getTheBiggestSalary(obj){
+		var res = null;
+		var name = 'No workers !';
+		for (var key in obj){
+			if (res < obj[key]){
+				 res = obj[key];
+				 name = key;
+			}
+		}
+		return name;
+	}
+	function multiplyNumeric(obj){
+		for (var key in obj){
+			if (isNumeric(obj[key])){
+				obj[key] *= 2;
+			}
+		}
+		return obj;
+	}
+	function calcItems(){
+		var a = null, arr = [], res = null;
+		while (true){
+			a = prompt('?', '');
+			if (a === '' || isNaN(a) || a === null) break;
+			arr.push(+a);
+		}
+		for (var i = 0; i < arr.length; i++) {
+			res += arr[i];
+		}
+		return alert(res);
+	}
+	function findValInArr(arr, value){
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] === value) return i;
+		}
+		return -1;
+	}
+	function filterRange(arr, a, b){
+		var res = [];
+		for (var i = 0; i < arr.length; i++) {
+			if (a <= arr[i] && arr[i] <= b){
+				res.push(arr[i]);
+			}
+		} 
+		return res;
+	}
+	function addClass(obj, cls){
+		var arr = [];
+		arr = obj.classNames.split(' ');
+		if (arr.indexOf(cls) === -1) arr.push(cls);
+		return obj.classNames = arr.join(' ');
+	}
+	function camelize(str){
+		if (str.indexOf('-') == -1) return str;
+		var arr = str.split('-');
+		for (var i = 1; i < arr.length; i++){
+			arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+		}
+		return arr.join('');
+	}
+	function removeClass(obj, cls){
+		var arr = obj.classNames.split(' ');
+		for (var i = 0; i < arr.length; i++){
+			if (arr[i] == cls){
+				arr.splice(i, 1);
+				i--
+			}
+		}
+		obj.classNames = arr.join(' ');
+		return obj;
+	}
+	function filterRangeInPlace(arr, a, b){
+		for (var i = 0; i < arr.length; i++){
+			if (arr[i] < a || arr[i] > b){
+				arr.splice(i, 1);
+				i--;
+			}
+		}
+	}
+	function sorting(a, b){
+		return Math.random() - 0.5;
+	}
+	function printList(obj){
+		var tmp = obj;
+		while(tmp){
+		console.log(tmp.value);;
+		tmp = tmp.next;
+		}
+	}
+	function printReverseList(obj){
+		var arr = [], tmp = obj;
+		while(tmp){
+		arr.unshift(tmp.value);;
+		tmp = tmp.next;
+		}
+		for (var i = 0; i < arr.length; i++){
+			console.log(arr[i]);
+		}
+	}
+	function printList2(obj){
+		console.log(obj.value);
+		if (obj.next){
+			printList2(obj.next);
+		}
+	}
+	function aclean(arr){
+		var obj = {}, str = '', result = [];
+		for (var i = 0; i < arr.length; i++){
+			str = arr[i].toLowerCase().split('').sort().join('');
+			obj[str] = arr[i];
+		}
+		for (var key in obj){
+			result.push(obj[key]);
+		}
+		return result;
+	}
+	function unique(arr){
+		var obj = {};
+		for (var i = 0; i < arr.length; i++){
+			obj[arr[i]] = 1;
+		}
+		arr.length = 0;
+		for (var key in obj) {
+			arr.push(key);
+		}
+		return arr;
+	}
+	var arrPlanets = ["Есть", "жизнь", "на", "Марсе", "Или", "Нет"];
+	var arrPlanetsLength = arrPlanets.map(function(elem) {
+		return elem.length;
+	});
+	var arrNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+	function getSumsOfNums (arr){
+		var resArr = [];
+		var finalSum = arr.reduce(function(currVal, item){
+			resArr.push(currVal);
+			return currVal + item;
+		})
+		resArr.push(finalSum);
+		return resArr;
+	}
+	function f(x){
+		var res = (arguments.length) ? 1 : 0;
+		return res;
+	}
+	function sumOfArgs(){
+		var res = null;
+		if (!(arguments.length)) return 0;
+		for (var i = 0; i < arguments.length; i++){
+			res += arguments[i];
+		}
+		return res;
+	}
+	function getWeekDay(date){
+		var arrDay = ['вс','пн','вт','ср','чт','пт','сб'];
+		return arrDay[date.getDay()];
+	}
+	function getLocalDay(date){
+		var arrDay = ['7','1','2','3','4','5','6'];
+		return arrDay[date.getDay()];
+	}
+	function getLastDayOfMonth(year, month){
+		var d = new Date(year, (month + 1), 0);	
+		return d.getDate();
+	}
+	function getSecondsToday(){
+		var date = new Date();
+		var start = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+		return (date - start) / 1000;
+	}
+	function getSecondsToTomorrow(){
+		var date = new Date();
+		var tomorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+		return Math.round((tomorrow - date) / 1000);
+	}
+	function sum(a){
+		return function (b){
+			return a + b;
+		}
+	}
+	function makeBuffer(){
+		var arr = [];
+		function buffer (a){
+			if (!(arguments.length)) return arr.join('');
+			arr.push(a);
+		}
+		buffer.clear = function(){
+			arr.length = 0;
+		}
+		return buffer;
+	}
+	function byField (prop){
+		return function(a, b){
+			return a[prop] > b[prop] ? 1: -1;
+		}
+	}
+	function filter (arr, func){
+		var newArr = [];
+		for (var i = 0; i < arr.length; i++) {
+			if (func(arr[i])) {
+				newArr.push(arr[i]);
+			}
+		};
+		return newArr;
+	}
+	function inBetween (a, b){
+		return function(item){
+			return (item >= a && item <= b) ? true: false;
+		}
+	}
+	function inArray (arr){
+		return function (item){
+			for (var i = 0; i < arr.length; i++){
+				if (arr[i] == item) return true;
+			}
+		}
+	}
+	var calculator = {
+		read: function(){
+			this.a = +prompt('a?', '');
+			this.b = +prompt('b?', '');
+		},
+		sum: function(){
+			return (this.a + this.b);
+		},
+		mul: function(){
+			return (this.a * this.b);
+		}
+	};
+	var ladder = {		/*chaining*/
+		step: 0,
+		up: function() {
+			this.step++;
+			return this;
+		},
+		down: function() {
+			this.step--;
+			return this;
+		},
+		showStep: function() {
+			alert( this.step );
+			return this;
+		}
+	};
+	function Accumulator(val) {
+		this.value = val;
+		this.read = function(){
+			this.value += +prompt('n ?', '');
+		}
+	}
+	function User(fullName) {
+		this.fullName = fullName;
+		Object.defineProperties(this, {
+			firstName: {
+				get: function() {
+					return this.fullName.split(' ')[0];
+				},
+				set: function (val){
+					var arr = this.fullName.split(' ');
+					arr[0] = val;
+					this.fullName = arr.join(' ');
+				},
+				enumerable: true
+			}, 
+			lastName: {
+				get: function() {
+					return this.fullName.split(' ')[1];
+				},
+				set: function (val){
+					var arr = this.fullName.split(' ');
+					arr[1] = val;
+					this.fullName = arr.join(' ');
+				},
+				enumerable: true
+			}
+		});
+	}
+	function Article(){
+		this.created = new Date();
+		Article.count++;
+		Article.last = this.created;
+	}
+	Article.count = 0;
+	Article.showStats = function (){
+		return 'Всего: ' + this.count + ', ' + 'Последняя: ' + this.last;
+	}
+	function sumArgs() {
+		var res = [].reduce.call(arguments, function(a, b){
+			return a + b;
+		});
+		return res;
+	}
+	function applyAll(){
+		var arrArgs = [].slice.apply(arguments);
+		var argsForFunc = arrArgs.slice(1)
+		return arrArgs[0].apply(this, argsForFunc);
+	}
+	</script>
+</body>
+</html>
